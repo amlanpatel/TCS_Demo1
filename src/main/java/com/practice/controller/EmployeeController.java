@@ -1,14 +1,57 @@
 package com.practice.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.practice.domain.Employee;
+import com.practice.service.EmployeeService;
+
+/**
+ * @author Amlan
+ * This is Employee Controller class where all employee service related requests will come.
+ * */
 @RestController
 @RequestMapping("/practice")
 public class EmployeeController {
 	
+	@Autowired
+	private EmployeeService employeeService;
+	/**
+	 * This method is test method to test the welcome message "Welcome Home !"  
+	 * */
 	@RequestMapping("/home")
 	public String welcome() {
 		return "Welcome Home !";
+	}
+
+	@RequestMapping(value = "/employee/getEmployee/{id}", method = RequestMethod.GET)
+	public Employee getEmployeeById(@PathVariable("id") Integer id) {
+		return employeeService.getEmployeeById(id);
+	}
+	
+	@RequestMapping(value = "/employee/getAllEmployees", method = RequestMethod.GET)
+	public List<Employee> getAllEmployees(){
+		return employeeService.getAllEmployees();
+	}
+	
+	@RequestMapping(value = "/employee/saveEmployee", method = RequestMethod.POST)
+	public Employee saveEmployee(@RequestBody Employee employee) {
+		return employeeService.saveEmployee(employee);
+	}
+	
+	@RequestMapping(value = "/employee/updateEmployee", method = RequestMethod.PUT)
+	public Employee updateEmployee(@RequestBody Employee employee) {
+		return employeeService.updateEmployee(employee);
+	}
+
+	@RequestMapping(value = "/employee/deleteEmployee/{id}", method = RequestMethod.DELETE)
+	public void deleteEmployee(@PathVariable("id") Integer id) {
+		employeeService.deleteEmployee(id);
 	}
 }
