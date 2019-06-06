@@ -17,7 +17,7 @@ import com.practice.service.EmployeeService;
  * This is Employee Controller class where all employee service related requests will come.
  * */
 @RestController
-@RequestMapping("/practice")
+@RequestMapping("/employee")
 public class EmployeeController {
 	
 	@Autowired
@@ -25,32 +25,32 @@ public class EmployeeController {
 	/**
 	 * This method is test method to test the welcome message "Welcome Home !"  
 	 * */
-	@RequestMapping("/home")
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String welcome() {
 		return "Welcome Home !";
 	}
 
-	@RequestMapping(value = "/employee/getEmployee/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getEmployee/{id}", method = RequestMethod.GET)
 	public Employee getEmployeeById(@PathVariable("id") Integer id) {
 		return employeeService.getEmployeeById(id);
 	}
 	
-	@RequestMapping(value = "/employee/getAllEmployees", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllEmployees", method = RequestMethod.GET)
 	public List<Employee> getAllEmployees(){
 		return employeeService.getAllEmployees();
 	}
 	
-	@RequestMapping(value = "/employee/saveEmployee", method = RequestMethod.POST)
+	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
 	public Employee saveEmployee(@RequestBody Employee employee) {
 		return employeeService.saveEmployee(employee);
 	}
 	
-	@RequestMapping(value = "/employee/updateEmployee", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateEmployee", method = RequestMethod.PUT)
 	public Employee updateEmployee(@RequestBody Employee employee) {
 		return employeeService.updateEmployee(employee);
 	}
 
-	@RequestMapping(value = "/employee/deleteEmployee/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteEmployee/{id}", method = RequestMethod.DELETE)
 	public void deleteEmployee(@PathVariable("id") Integer id) {
 		employeeService.deleteEmployee(id);
 	}
