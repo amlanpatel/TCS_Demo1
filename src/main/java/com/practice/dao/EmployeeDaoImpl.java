@@ -2,41 +2,46 @@ package com.practice.dao;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.practice.domain.Employee;
+import com.practice.mapper.EmployeeMapper;
 
 @Repository("EmployeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
 
+	private EmployeeMapper employeeMapper;
+
+	@Autowired
+	public EmployeeDaoImpl(EmployeeMapper employeeMapper) {
+		this.employeeMapper = employeeMapper;
+	}
+
 	@Override
 	public Employee getEmployeeById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeMapper.getEmployeeById(id);
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+		return employeeMapper.getAllEmployees();
 	}
 
 	@Override
-	public Employee saveEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void saveEmployee(Employee employee) {
+		employeeMapper.insertEmployee(employee);
 	}
 
 	@Override
-	public Employee updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateEmployee(Employee employee) {
+		employeeMapper.updateEmployee(employee);
+		;
 	}
 
 	@Override
 	public void deleteEmployee(Integer id) {
-		// TODO Auto-generated method stub
-
+		employeeMapper.deleteEmployee(id);
 	}
 
 }

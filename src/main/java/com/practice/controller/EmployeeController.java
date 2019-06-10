@@ -41,13 +41,13 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
-	public Employee saveEmployee(@RequestBody Employee employee) {
-		return employeeService.saveEmployee(employee);
+	public void saveEmployee(@RequestBody Employee employee) {
+		employeeService.saveEmployee(employee);
 	}
 	
 	@RequestMapping(value = "/updateEmployee", method = RequestMethod.PUT)
-	public Employee updateEmployee(@RequestBody Employee employee) {
-		return employeeService.updateEmployee(employee);
+	public void updateEmployee(@RequestBody Employee employee) {
+		employeeService.updateEmployee(employee);
 	}
 
 	@RequestMapping(value = "/deleteEmployee/{id}", method = RequestMethod.DELETE)

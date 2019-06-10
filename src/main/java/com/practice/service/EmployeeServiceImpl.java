@@ -12,10 +12,13 @@ import com.practice.domain.Employee;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-	@Autowired
-	@Qualifier("EmployeeDaoJavaImpl")
 	private EmployeeDao employeeDao;
-	
+
+	@Autowired
+	public EmployeeServiceImpl(@Qualifier("EmployeeDao") EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
 	@Override
 	public Employee getEmployeeById(Integer id) {
 		return employeeDao.getEmployeeById(id);
@@ -27,13 +30,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Employee saveEmployee(Employee employee) {
-		return employeeDao.saveEmployee(employee);
+	public void saveEmployee(Employee employee) {
+		employeeDao.saveEmployee(employee);
 	}
-	
+
 	@Override
-	public Employee updateEmployee(Employee employee) {
-		return employeeDao.updateEmployee(employee);
+	public void updateEmployee(Employee employee) {
+		employeeDao.updateEmployee(employee);
 	}
 
 	@Override

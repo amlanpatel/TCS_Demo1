@@ -10,9 +10,9 @@ public interface EmployeeService {
 
 	public List<Employee> getAllEmployees();
 
-	public Employee saveEmployee(Employee employee);
+	public void saveEmployee(Employee employee);
 	
-	public Employee updateEmployee(Employee employee);
+	public void updateEmployee(Employee employee);
 
 	public void deleteEmployee(Integer id);
 }

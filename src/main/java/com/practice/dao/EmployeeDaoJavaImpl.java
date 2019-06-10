@@ -28,22 +28,18 @@ public class EmployeeDaoJavaImpl implements EmployeeDao {
 	}
 
 	@Override
-	public Employee saveEmployee(Employee employee) {
+	public void saveEmployee(Employee employee) {
 		System.out.println(employees.size());
 		employee.setId(employees.size()+1);
 		employees.add(employee);
-		return employee;
 	}
 	
 	@Override
-	public Employee updateEmployee(Employee employee) {
+	public void updateEmployee(Employee employee) {
 		Employee temp = employees.stream().filter(emp -> emp.getId().equals(employee.getId())).findAny().orElse(null);
 		if(temp != null) {
 			employees.remove(temp);
 			employees.add(employee);
-			return employee;
-		}else {
-			return null;
 		}
 	}
 
