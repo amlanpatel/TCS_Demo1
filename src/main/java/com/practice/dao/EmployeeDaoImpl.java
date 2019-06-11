@@ -36,7 +36,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void updateEmployee(Employee employee) {
 		employeeMapper.updateEmployee(employee);
-		;
 	}
 
 	@Override

@@ -15,6 +15,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	
 	private EmployeeDao employeeDao;
 
+	public void setEmployeeDao(EmployeeDao employeeDao) {
+		this.employeeDao = employeeDao;
+	}
+
 	@Autowired
 	public EmployeeServiceImpl(BeanFactory beanFactory, Environment environment) {
 		employeeDao = (EmployeeDao) beanFactory.getBean(environment.getProperty("custom.dao.implementation"));

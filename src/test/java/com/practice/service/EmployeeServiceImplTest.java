@@ -19,9 +19,7 @@ import com.practice.dao.EmployeeDao;
 import com.practice.domain.Employee;
 
 public class EmployeeServiceImplTest {
-
-	private BeanFactory beanFactory;
-	private Environment environment;
+	 
 	private EmployeeDao employeeDao;
 	private EmployeeServiceImpl employeeServiceImpl;
 
@@ -30,10 +28,11 @@ public class EmployeeServiceImplTest {
 
 	@Before
 	public void setUp() {
-		beanFactory = mock(BeanFactory.class);
-		environment = mock(Environment.class);
-		employeeDao = mock(EmployeeDao.class);
+		BeanFactory beanFactory = mock(BeanFactory.class);
+		Environment environment = mock(Environment.class);
 		employeeServiceImpl = new EmployeeServiceImpl(beanFactory, environment);
+		employeeDao = mock(EmployeeDao.class);
+		employeeServiceImpl.setEmployeeDao(employeeDao);
 		employee = new Employee(1, "Amlan", "amlan@gmail.com", 100D);
 	}
 
