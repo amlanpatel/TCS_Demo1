@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.practice.domain.Employee;
 
-@Repository("EmployeeDaoJavaImpl")
+@Repository("EmployeeDaoJava")
 public class EmployeeDaoJavaImpl implements EmployeeDao {
 	
 	private static List<Employee> employees = new ArrayList<>();

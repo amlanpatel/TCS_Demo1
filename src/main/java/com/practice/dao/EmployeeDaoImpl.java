@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.practice.domain.Employee;
 import com.practice.mapper.EmployeeMapper;
 
-@Repository("EmployeeDao")
+@Repository("EmployeeDaoH2")
 public class EmployeeDaoImpl implements EmployeeDao {
 
+	@Autowired
 	private EmployeeMapper employeeMapper;
 
-	@Autowired
 	public EmployeeDaoImpl(EmployeeMapper employeeMapper) {
 		this.employeeMapper = employeeMapper;
 	}

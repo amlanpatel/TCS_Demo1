@@ -22,6 +22,11 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	
+	public EmployeeController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
+
 	/**
 	 * This method is test method to test the welcome message "Welcome Home !"  
 	 * */
