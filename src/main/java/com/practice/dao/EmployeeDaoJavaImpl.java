@@ -46,9 +46,7 @@ public class EmployeeDaoJavaImpl implements EmployeeDao {
 	@Override
 	public void deleteEmployee(Integer id) {
 		Employee temp = employees.stream().filter(emp -> emp.getId().equals(id)).findAny().orElse(null);
-		if(temp != null) {
-			employees.remove(temp);
-		}
+		employees.remove(temp);
 	}
 
 }
